@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Entorno virtual
+venv/
+env/
+
+# VS Code
+.vscode/
+
+# Archivos sensibles
+.env
+
+# Carpeta de descargas
+downloads/
+*.mp3
+*.mp4
+*.m4a
+
+# Otros
+*.log

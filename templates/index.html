@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Descargar Música</title>
+        <link rel="stylesheet"
+            href="{{ url_for('static', filename='style.css') }}">
+    </head>
+    <body>
+        <div class="container">
+            <h1>Buscador de Música</h1>
+            <form action="/search" method="post">
+                <input type="text" name="query" placeholder="Buscar canción..."
+                    required>
+                <button type="submit">Buscar</button>
+            </form>
+
+            {% if results %}
+            <div class="results">
+                {% for song in results %}
+                <div class="song">
+                    <img src="{{ song.thumbnail }}" alt="{{ song.title }}">
+                    <div class="info">
+                        <h3>{{ song.title }}</h3>
+                        <p>Duración: {{ song.duration_str }}</p>
+                        <div class="actions">
+                            <form action="/download" method="post"
+                                style="display: inline;">
+                                <input type="hidden" name="url"
+                                    value="{{ song.url }}">
+                                <input type="hidden" name="title"
+                                    value="{{ song.title }}">
+                                <button type="submit">Descargar</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            {% endif %}
+        </div>
+
+    </body>
+</html>
