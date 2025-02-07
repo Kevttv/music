@@ -1,14 +1,10 @@
 import yt_dlp
 import os
 
-
 def download_song(url, title):
     try:
-        if not os.path.exists('downloads'):
-            os.makedirs('downloads')
-            
         safe_title = "".join([c for c in title if c.isalnum() or c in (' ', '-', '_')]).rstrip()
-        output_file = os.path.join('downloads', f"{safe_title}.mp3")
+        output_file = f"{safe_title}.mp3"
         
         ydl_opts = {
             'format': 'bestaudio/best',
